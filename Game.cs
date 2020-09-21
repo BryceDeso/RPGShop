@@ -6,12 +6,27 @@ namespace HelloWorld
 {
     class Game
     {
+        private bool _gameOver = false;
+
         //Run the game
         public void Run()
         {
-            
+            Start();
+
+            while(_gameOver == false)
+            {
+                Update();
+            }
+
+            End();
         }
 
+        struct Item
+        {
+            int cost;
+            string name;
+        }
+        
         //Performed once when the game begins
         public void Start()
         {
