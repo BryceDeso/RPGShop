@@ -12,8 +12,8 @@ namespace HelloWorld
 
     class Game
     {
-        private Shop _shop = new Shop();
         private Player _player = new Player();
+        private Shop _shop = new Shop();
         private bool _gameOver = false;
         private Item _arrow;
         private Item _shield;
@@ -50,17 +50,41 @@ namespace HelloWorld
             Console.WriteLine("Thank you for your business!");
         }
 
-        public Item PrintInventory(Item[] player)
+        public Item PrintInventory(Item[])
         {
-            for(int i = 0; i < 3; i++)
-            {
+            Item[] inventory = { _arrow, _shield, _gem };
 
+            for(int i = 0; i < inventory.Length; i++)
+            {
+                Console.WriteLine(i + ". " + inventory[i].name + "\nCost: " + inventory[i].cost);
             }
         }
 
         private void OpenShopMenu()
         {
+            PrintInventory();
+            
+            char input = ' ';
+            input = Console.ReadKey().KeyChar;
 
+            switch (input)
+            {
+                case '1':
+                    {
+
+                        break;
+                    }
+                case '2':
+                    {
+
+                        break;
+                    }
+                case '3':
+                    {
+
+                        break;
+                    }
+            }
         }
 
         private void InitItems()

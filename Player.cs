@@ -29,10 +29,7 @@ namespace HelloWorld
 
         public bool Buy(Item item, int index)
         {
-            if(_gold > item.cost)
-            {
 
-            }
         }
     }
 }
