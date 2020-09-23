@@ -50,10 +50,8 @@ namespace HelloWorld
             Console.WriteLine("Thank you for your business!");
         }
 
-        public Item PrintInventory(Item[])
+        public void PrintInventory(Item[] inventory)
         {
-            Item[] inventory = { _arrow, _shield, _gem };
-
             for(int i = 0; i < inventory.Length; i++)
             {
                 Console.WriteLine(i + ". " + inventory[i].name + "\nCost: " + inventory[i].cost);
@@ -62,7 +60,7 @@ namespace HelloWorld
 
         private void OpenShopMenu()
         {
-            PrintInventory();
+            PrintInventory(_shop.GetInventory());
             
             char input = ' ';
             input = Console.ReadKey().KeyChar;
@@ -71,20 +69,23 @@ namespace HelloWorld
             {
                 case '1':
                     {
-
+                        _shop.Sell(_player, 0, 0);
                         break;
                     }
                 case '2':
                     {
-
+                        _shop.Sell(_player, 1, 1);
                         break;
                     }
                 case '3':
                     {
-
+                        _shop.Sell(_player, 2, 2);
                         break;
                     }
             }
+
+            PrintInventory(_player.GetInventory());
+
         }
 
         private void InitItems()
