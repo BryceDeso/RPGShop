@@ -11,7 +11,7 @@ namespace HelloWorld
 
         public Player()
         {
-            _gold = 255;
+            _gold = 100;
             _inventory = new Item[3];
         }
 
@@ -27,9 +27,15 @@ namespace HelloWorld
             return _inventory;
         }
 
-        public bool Buy(Item item, int index)
+        public bool Buy(Item item, int inventoryIndex)
         {
-
+            if(_gold >= item.cost)
+            {
+                _gold -= item.cost;
+                _inventory[inventoryIndex] = item;
+                return true;
+            }
+            return false;
         }
     }
 }

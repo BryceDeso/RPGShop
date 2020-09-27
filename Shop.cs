@@ -11,32 +11,26 @@ namespace HelloWorld
 
         public Shop()
         {
-            _gold = 0;
+            _gold = 100;
             _inventory = new Item[3];
         }
 
-        public Shop(Item[] item)
+        public Shop(Item[] items)
         {
-            _gold = 0;
-            _inventory = new Item[3];           
+            _gold = 100;
+            _inventory = new Item[3];
+            _inventory = items;          
         }
 
-        public void CheckPlayerFunds(Player player)
+        public bool Sell(Player player, int itemIndex, int playerIndex)
         {
-            if(player.GetGold > cost)
+            Item itemToBuy = _inventory[itemIndex];
+            if(player.Buy(itemToBuy, playerIndex))
             {
-
+                _gold += itemToBuy.cost;
+                return true;
             }
-        }
-
-        public bool Sell(Player player, int shopindex, int playerindex)
-        {
-            return player.Buy(_inventory[shopindex], playerindex);
-        }
-
-        public Item[] GetInventory()
-        {
-            return _inventory;
+            return false;
         }
 
     }
